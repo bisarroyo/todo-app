@@ -1,24 +1,15 @@
-import { useState } from 'react'
-import { Add } from './components/Add'
-import { TodosList } from './containers/TodosList'
+import { Todos } from './pages/Todos'
+import { TodosProvider } from './context/TodosProvider'
+// import { Route, Routes } from 'react-router-dom'
 
-function App () {
-  const [todos, setTodos] = useState([
-  ])
-
-  const handleAddTodo = (newTodo) => {
-    setTodos([
-      ...todos,
-      newTodo
-    ])
-  }
-
-  console.log(todos)
+const App = () => {
   return (
-    <>
-      <Add onNewTodo={handleAddTodo} />
-      <TodosList todos={todos} />
-    </>
+    // <TodosProvider>
+    //   <Routes>
+    //     <Route path='/' element={<Todos />} />
+    //   </Routes>
+    // </TodosProvider>
+    <Todos />
   )
 }
 
