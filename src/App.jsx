@@ -1,11 +1,23 @@
+import { useState } from 'react'
 import { Add } from './components/Add'
-import { Item } from './components/Item'
+import { TodosList } from './containers/TodosList'
 
 function App () {
+  const [todos, setTodos] = useState([
+  ])
+
+  const handleAddTodo = (newTodo) => {
+    setTodos([
+      ...todos,
+      newTodo
+    ])
+  }
+
+  console.log(todos)
   return (
     <>
-      <Add />
-      <Item />
+      <Add onNewTodo={handleAddTodo} />
+      <TodosList todos={todos} />
     </>
   )
 }
