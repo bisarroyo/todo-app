@@ -1,33 +1,19 @@
-import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { GrFormAdd } from 'react-icons/gr'
+import { useForm } from '../hooks/useForm'
 
 export const Add = ({ onNewTodo }) => {
-  const [form, setForm] = useState({
+  const { description, form, handleChange, handleReset } = useForm({
     id: uuidv4(),
     description: '',
     done: false
   })
 
-  const { description } = form
-
   const handleSubmit = (event) => {
     event.preventDefault()
     if (description.length <= 3) return
     onNewTodo(form)
-    setForm({
-      id: uuidv4(),
-      description: '',
-      done: false
-    })
-  }
-
-  const handleChange = (event) => {
-    const { name, value } = event.target
-    setForm({
-      ...form,
-      [name]: value
-    })
+    handleReset()
   }
 
   return (

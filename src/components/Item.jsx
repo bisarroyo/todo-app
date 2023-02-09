@@ -1,11 +1,11 @@
 import { MdDelete, MdEdit } from 'react-icons/md'
 
-export const Item = ({ todo }) => {
+export const Item = ({ todo, handleDelete, handleEdit }) => {
   return (
     <div>
-      <p>{todo}</p>
-      <button><MdDelete /></button>
-      <button><MdEdit /></button>
+      <p>{todo.description}</p>
+      <button onClick={() => handleDelete(todo.id)}><MdDelete /></button>
+      <button onClick={handleEdit}><MdEdit /></button>
     </div>
   )
 }
