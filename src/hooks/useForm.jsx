@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-export const useForm = (initialForm = {}) => {
-  const [form, setForm] = useState(initialForm)
+export const useForm = ({ ...inputs }) => {
+  const [form, setForm] = useState({ id: uuidv4(), ...inputs })
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -12,7 +13,7 @@ export const useForm = (initialForm = {}) => {
   }
 
   const handleReset = () => {
-    setForm(initialForm)
+    setForm({ id: uuidv4(), ...inputs })
   }
 
   return {
