@@ -1,10 +1,8 @@
-import { v4 as uuidv4 } from 'uuid'
 import { GrFormAdd } from 'react-icons/gr'
 import { useForm } from '../hooks/useForm'
 
 export const Add = ({ onNewTodo }) => {
   const { description, form, handleChange, handleReset } = useForm({
-    id: uuidv4(),
     description: '',
     done: false
   })

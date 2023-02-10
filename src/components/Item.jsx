@@ -5,7 +5,7 @@ export const Item = ({ todo, handleDelete, handleEdit }) => {
     <div>
       <p>{todo.description}</p>
       <button onClick={() => handleDelete(todo.id)}><MdDelete /></button>
-      <button onClick={handleEdit}><MdEdit /></button>
+      <button onClick={() => handleEdit(todo.id, 'edit')}><MdEdit /></button>
     </div>
   )
 }

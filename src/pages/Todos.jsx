@@ -1,30 +1,19 @@
-import { useState } from 'react'
 import { Add } from '../components/Add'
 import { TodosList } from '../containers/TodosList'
 
+import { useTodo } from '../hooks/useTodo'
+
 export const Todos = () => {
-  const [todos, setTodos] = useState([
-  ])
-
-  const handleAddTodo = (newTodo) => {
-    setTodos([
-      ...todos,
-      newTodo
-    ])
-  }
-
-  const handleDelete = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id)
-    setTodos(newTodos)
-  }
-
+  const { todos, handleAddTodo, handleRemoveTodo, handleEditTodo } = useTodo()
   console.log(todos)
+
   return (
     <>
       <Add onNewTodo={handleAddTodo} />
       <TodosList
         todos={todos}
-        handleDelete={handleDelete}
+        handleDelete={handleRemoveTodo}
+        handleEdit={handleEditTodo}
       />
     </>
   )
