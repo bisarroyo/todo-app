@@ -1,9 +1,8 @@
-import { useReducer } from 'react'
-import { todoReducer } from '../reducer/todoReducer'
 import { AddTodo, RemoveTodo, EditTodo, ToggleTodo, StarredTodo } from '../actions'
+import { useAppContext } from './useAppContext'
 
 export const useTodo = () => {
-  const [todos, dispatch] = useReducer(todoReducer, [])
+  const { todos, dispatch } = useAppContext()
 
   const handleAddTodo = (todo) => {
     const action = {
@@ -13,10 +12,10 @@ export const useTodo = () => {
     dispatch(action)
   }
 
-  const handleRemoveTodo = (todo) => {
+  const handleRemoveTodo = (id) => {
     const action = {
       type: RemoveTodo,
-      payload: todo
+      payload: id
     }
     dispatch(action)
   }

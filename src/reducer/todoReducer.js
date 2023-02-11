@@ -5,43 +5,58 @@ const initialState = []
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case AddTodo:
-      return [...state, action.payload]
+      return {
+        ...state,
+        todos: [...state.todos, action.payload]
+      }
 
     case RemoveTodo:
-      return state.filter((todo) => todo.id !== action.payload)
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload)
+      }
 
     case EditTodo:
-      return state.map((todo) => {
-        if (todo.id === action.payload.id) {
-          return {
-            ...todo,
-            description: action.payload.description
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.payload.id) {
+            return {
+              ...todo,
+              description: action.payload.description
+            }
           }
-        }
-        return todo
-      })
+          return todo
+        })
+      }
 
     case ToggleTodo:
-      return state.map((todo) => {
-        if (todo.id === action.payload) {
-          return {
-            ...todo,
-            done: !todo.done
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.payload) {
+            return {
+              ...todo,
+              done: !todo.done
+            }
           }
-        }
-        return todo
-      })
+          return todo
+        })
+      }
 
     case StarredTodo:
-      return state.map((todo) => {
-        if (todo.id === action.payload) {
-          return {
-            ...todo,
-            starred: !todo.starred
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.payload) {
+            return {
+              ...todo,
+              starred: !todo.starred
+            }
           }
-        }
-        return todo
-      })
+          return todo
+        })
+      }
 
     default:
       return state
