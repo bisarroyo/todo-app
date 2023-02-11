@@ -10,6 +10,8 @@ export const ItemStyle = styled.div`
   .item-info {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 
     input[type="checkbox"] {

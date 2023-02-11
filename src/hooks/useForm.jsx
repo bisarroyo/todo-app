@@ -12,6 +12,13 @@ export const useForm = ({ ...inputs }) => {
     })
   }
 
+  const setValues = ({ ...values }) => {
+    setForm({
+      ...form,
+      ...values
+    })
+  }
+
   const handleReset = () => {
     setForm({ id: uuidv4(), ...inputs })
   }
@@ -20,6 +27,7 @@ export const useForm = ({ ...inputs }) => {
     ...form,
     form,
     handleChange,
-    handleReset
+    handleReset,
+    setValues
   }
 }

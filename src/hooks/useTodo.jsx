@@ -1,4 +1,11 @@
-import { AddTodo, RemoveTodo, EditTodo, ToggleTodo, StarredTodo } from '../actions'
+import {
+  AddTodo,
+  RemoveTodo,
+  setEdit,
+  EditTodo,
+  ToggleTodo,
+  StarredTodo
+} from '../actions'
 import { useAppContext } from './useAppContext'
 
 export const useTodo = () => {
@@ -16,6 +23,14 @@ export const useTodo = () => {
     const action = {
       type: RemoveTodo,
       payload: id
+    }
+    dispatch(action)
+  }
+
+  const setEditing = (todo) => {
+    const action = {
+      type: setEdit,
+      payload: todo
     }
     dispatch(action)
   }
@@ -51,6 +66,7 @@ export const useTodo = () => {
     todos,
     handleAddTodo,
     handleRemoveTodo,
+    setEditing,
     handleEditTodo,
     handleToggleTodo,
     handleStarredTodo

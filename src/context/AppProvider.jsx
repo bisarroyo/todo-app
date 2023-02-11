@@ -4,7 +4,7 @@ import { AppContext } from './AppContext'
 
 const initialState = {
   todos: [],
-  editing: null,
+  editing: {},
   loading: false,
   error: null
 }

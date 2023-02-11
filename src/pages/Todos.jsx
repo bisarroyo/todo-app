@@ -6,8 +6,15 @@ import { Edit } from '../components/Edit'
 import { useTodo } from '../hooks/useTodo'
 
 export const Todos = () => {
-  const { todos, handleAddTodo, handleRemoveTodo, handleEditTodo, handleToggleTodo, handleStarredTodo } = useTodo()
-  console.log(todos)
+  const {
+    todos,
+    handleAddTodo,
+    handleRemoveTodo,
+    setEditing,
+    handleEditTodo,
+    handleToggleTodo,
+    handleStarredTodo
+  } = useTodo()
 
   return (
     <TodosStyle>
@@ -20,14 +27,14 @@ export const Todos = () => {
         <TodosList
           todos={todos}
           handleDelete={handleRemoveTodo}
-          handleEdit={handleEditTodo}
+          handleEdit={setEditing}
           handleToggle={handleToggleTodo}
           handleStarred={handleStarredTodo}
         />
       </section>
       <section>
         <h2>Info</h2>
-        <Edit todos={todos} />
+        <Edit handleEdit={handleEditTodo} />
       </section>
     </TodosStyle>
   )

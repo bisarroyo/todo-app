@@ -47,6 +47,7 @@ export const AddStyle = styled.form`
       background-color: #FFFFFF;
       border-radius: 5px;
       cursor: pointer;
+      color: #000000;
     }
   }
 `

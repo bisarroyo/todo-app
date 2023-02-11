@@ -1,4 +1,11 @@
-import { AddTodo, RemoveTodo, EditTodo, ToggleTodo, StarredTodo } from '../actions'
+import {
+  AddTodo,
+  RemoveTodo,
+  setEdit,
+  EditTodo,
+  ToggleTodo,
+  StarredTodo
+} from '../actions'
 
 const initialState = []
 
@@ -14,6 +21,12 @@ export const AppReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload)
+      }
+
+    case setEdit:
+      return {
+        ...state,
+        editing: action.payload
       }
 
     case EditTodo:
