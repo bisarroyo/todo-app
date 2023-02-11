@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { TodosContext } from '../context/TodosContext'
+import { AppContext } from '../context/AppContext'
 
 export const useAppContext = () => {
-  return useContext(TodosContext)
+  return useContext(AppContext)
 }

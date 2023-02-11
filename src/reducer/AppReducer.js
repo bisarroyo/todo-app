@@ -2,7 +2,7 @@ import { AddTodo, RemoveTodo, EditTodo, ToggleTodo, StarredTodo } from '../actio
 
 const initialState = []
 
-export const todoReducer = (state = initialState, action) => {
+export const AppReducer = (state = initialState, action) => {
   switch (action.type) {
     case AddTodo:
       return {
