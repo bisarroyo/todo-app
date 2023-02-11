@@ -32,5 +32,8 @@ export const ItemStyle = styled.div`
       margin-left: 20px;
       cursor: pointer;
     }
+    button:disabled {
+      cursor: not-allowed;
+    }
   }
 `

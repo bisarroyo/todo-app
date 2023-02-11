@@ -18,7 +18,7 @@ export const Item = ({ todo, handleDelete, handleEdit, handleToggle, handleStarr
         <p className={`${todo.done && 'todo-done'}`}>{todo.description}</p>
       </div>
       <div className='item-controls'>
-        <button onClick={() => handleStarred(todo.id)}>
+        <button onClick={() => handleStarred(todo.id)} disabled={todo.done}>
           {
             todo.starred
               ? <AiFillStar />
@@ -26,7 +26,7 @@ export const Item = ({ todo, handleDelete, handleEdit, handleToggle, handleStarr
           }
         </button>
         <button onClick={() => handleDelete(todo.id)}><MdDelete /></button>
-        <button onClick={() => handleEdit(todo.id, 'description')}><MdEdit /></button>
+        <button onClick={() => handleEdit(todo.id, 'description')} disabled={todo.done}><MdEdit /></button>
       </div>
     </ItemStyle>
   )
