@@ -1,11 +1,11 @@
-// import { useState } from 'react'
-// import DatePicker from 'react-date-picker'
+import { useState } from 'react'
+import DatePicker from 'react-date-picker'
 import { useForm } from '../hooks/useForm'
 import { AddStyle } from './AddStyle'
-// import { BsFillCalendarEventFill } from 'react-icons/bs'
+import { BsFillCalendarEventFill } from 'react-icons/bs'
 
 export const Add = ({ onNewTodo }) => {
-  // const [value, onChange] = useState(new Date())
+  const [value, onChange] = useState(new Date())
 
   const { description, form, handleChange, handleReset } = useForm({
     description: '',
@@ -31,9 +31,15 @@ export const Add = ({ onNewTodo }) => {
         onChange={handleChange}
       />
       <div className='add-submenu'>
-        {/* <DatePicker onChange={onChange} className='add-date' value={value} calendarIcon={<BsFillCalendarEventFill />} />
-        <button type='submit' className='add-btn'> */}
-        <button>Add</button>
+        <DatePicker
+          onChange={onChange}
+          className='add-date'
+          value={value}
+          calendarIcon={<BsFillCalendarEventFill />}
+        />
+        <button type='submit' className='add-btn'>
+          Add
+        </button>
       </div>
     </AddStyle>
   )
