@@ -1,19 +1,16 @@
-import { Todos } from './pages/Todos'
 import { GlobalStyle } from './globalStyles'
-// import { TodosProvider } from './context/TodosProvider'
-// import { Route, Routes } from 'react-router-dom'
+import { TodosProvider } from './context/TodosProvider'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { RoutesApp } from './routes/routes'
 
 const App = () => {
   return (
-    // <TodosProvider>
-    //   <Routes>
-    //     <Route path='/' element={<Todos />} />
-    //   </Routes>
-    // </TodosProvider>
-    <>
+    <TodosProvider>
       <GlobalStyle />
-      <Todos />
-    </>
+      <Router>
+        <RoutesApp />
+      </Router>
+    </TodosProvider>
   )
 }
 
