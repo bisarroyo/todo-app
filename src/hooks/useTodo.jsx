@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 import { todoReducer } from '../reducer/todoReducer'
-import { AddTodo, RemoveTodo, EditTodo, ToggleTodo } from '../actions'
+import { AddTodo, RemoveTodo, EditTodo, ToggleTodo, StarredTodo } from '../actions'
 
 export const useTodo = () => {
   const [todos, dispatch] = useReducer(todoReducer, [])
@@ -32,10 +32,18 @@ export const useTodo = () => {
     dispatch(action)
   }
 
-  const handleToggleTodo = (todo) => {
+  const handleToggleTodo = (id) => {
     const action = {
       type: ToggleTodo,
-      payload: todo
+      payload: id
+    }
+    dispatch(action)
+  }
+
+  const handleStarredTodo = (id) => {
+    const action = {
+      type: StarredTodo,
+      payload: id
     }
     dispatch(action)
   }
@@ -45,6 +53,7 @@ export const useTodo = () => {
     handleAddTodo,
     handleRemoveTodo,
     handleEditTodo,
-    handleToggleTodo
+    handleToggleTodo,
+    handleStarredTodo
   }
 }

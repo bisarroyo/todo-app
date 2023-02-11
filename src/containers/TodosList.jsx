@@ -1,6 +1,6 @@
 import { Item } from '../components/Item'
 
-export const TodosList = ({ todos, handleDelete, handleEdit }) => {
+export const TodosList = ({ todos, handleDelete, handleEdit, handleToggle, handleStarred }) => {
   return (
     <div>
       {
@@ -10,6 +10,8 @@ export const TodosList = ({ todos, handleDelete, handleEdit }) => {
               todo={todo}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
+              handleToggle={handleToggle}
+              handleStarred={handleStarred}
             />
           </div>
         ))

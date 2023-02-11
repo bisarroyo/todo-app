@@ -1,4 +1,4 @@
-import { AddTodo, RemoveTodo, EditTodo, ToggleTodo } from '../actions'
+import { AddTodo, RemoveTodo, EditTodo, ToggleTodo, StarredTodo } from '../actions'
 
 const initialState = []
 
@@ -22,7 +22,26 @@ export const todoReducer = (state = initialState, action) => {
       })
 
     case ToggleTodo:
-      return { ...state }
+      return state.map((todo) => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            done: !todo.done
+          }
+        }
+        return todo
+      })
+
+    case StarredTodo:
+      return state.map((todo) => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            starred: !todo.starred
+          }
+        }
+        return todo
+      })
 
     default:
       return state

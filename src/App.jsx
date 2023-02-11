@@ -1,4 +1,5 @@
 import { Todos } from './pages/Todos'
+import { GlobalStyle } from './globalStyles'
 // import { TodosProvider } from './context/TodosProvider'
 // import { Route, Routes } from 'react-router-dom'
 
@@ -9,7 +10,10 @@ const App = () => {
     //     <Route path='/' element={<Todos />} />
     //   </Routes>
     // </TodosProvider>
-    <Todos />
+    <>
+      <GlobalStyle />
+      <Todos />
+    </>
   )
 }
 
