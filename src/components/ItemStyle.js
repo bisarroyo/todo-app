@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ItemStyle = styled.div`
   padding: 30px 20px 10px 20px;
-  border-bottom: 1px solid rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,10 +14,15 @@ export const ItemStyle = styled.div`
     align-items: center;
     cursor: pointer;
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       margin-right: 8px;
       width: 12px;
       cursor: pointer;
+    }
+    p {
+      max-width: 100%;
+      height: auto;
+      line-break: anywhere;
     }
     .todo-done {
       text-decoration: line-through;

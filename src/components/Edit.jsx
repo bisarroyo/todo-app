@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useAppContext } from '../hooks/useAppContext'
 import { useForm } from '../hooks/useForm'
+import { EditStyle } from './EditStyle'
 
 export const Edit = ({ handleEdit }) => {
   const { editing } = useAppContext()
@@ -29,16 +30,14 @@ export const Edit = ({ handleEdit }) => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          name='description'
-          onChange={handleChange}
-          value={description ?? initialLoad.description}
-        />
-        <button onClick={() => handleEdit(id, description)}>Edit</button>
-      </form>
-    </>
+    <EditStyle onSubmit={handleSubmit}>
+      <input
+        type='text'
+        name='description'
+        onChange={handleChange}
+        value={description ?? initialLoad.description}
+      />
+      <button onClick={() => handleEdit(id, description)}>Edit</button>
+    </EditStyle>
   )
 }
