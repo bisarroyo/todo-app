@@ -6,6 +6,7 @@ export const TodosStyle = styled.div`
   grid-template-columns: 1fr 2fr 1fr;
 
   section:nth-child(1) {
+    padding: 50px 10px;
     border-right: 1px solid rgba(0, 0, 0, 0.3);
     height: 100%;
     position: sticky;
@@ -22,6 +23,7 @@ export const TodosStyle = styled.div`
   }
 
   section:nth-child(3) {
+    padding: 50px 10px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

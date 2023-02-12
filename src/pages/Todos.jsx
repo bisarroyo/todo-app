@@ -2,6 +2,7 @@ import { Add } from '../components/Add'
 import { TodosList } from '../containers/TodosList'
 import { TodosStyle } from './TodosStyle'
 import { Edit } from '../components/Edit'
+import { Filter } from '../components/Filter'
 
 import { useTodo } from '../hooks/useTodo'
 
@@ -20,6 +21,7 @@ export const Todos = () => {
     <TodosStyle>
       <section>
         <h2>Menu</h2>
+        <Filter />
       </section>
       <section>
         <h1>My To-dos</h1>

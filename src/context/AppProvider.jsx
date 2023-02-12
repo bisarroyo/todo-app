@@ -5,6 +5,11 @@ import { AppContext } from './AppContext'
 const initialState = {
   todos: [],
   editing: {},
+  show: {
+    pending: true,
+    starred: false,
+    done: false
+  },
   loading: false,
   error: null
 }
@@ -12,10 +17,12 @@ const initialState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState)
 
-  const { todos, editing, loading, error } = state
+  const { todos, editing, show, loading, error } = state
 
   return (
-    <AppContext.Provider value={{ todos, editing, loading, error, dispatch }}>
+    <AppContext.Provider
+      value={{ todos, editing, loading, error, show, dispatch }}
+    >
       {children}
     </AppContext.Provider>
   )

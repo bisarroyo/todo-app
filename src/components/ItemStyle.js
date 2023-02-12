@@ -38,9 +38,11 @@ export const ItemStyle = styled.div`
       font-size: 20px;
       margin-left: 20px;
       cursor: pointer;
+      transition: 0.5s all ease;
     }
     button:disabled {
       cursor: not-allowed;
+      opacity: 0.3;
     }
   }
 `

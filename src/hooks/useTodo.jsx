@@ -3,6 +3,7 @@ import {
   RemoveTodo,
   setEdit,
   EditTodo,
+  setFilter,
   ToggleTodo,
   StarredTodo
 } from '../actions'
@@ -45,6 +46,13 @@ export const useTodo = () => {
     }
     dispatch(action)
   }
+  const handleFilterTodo = (filter) => {
+    const action = {
+      type: setFilter,
+      payload: filter
+    }
+    dispatch(action)
+  }
 
   const handleToggleTodo = (id) => {
     const action = {
@@ -68,6 +76,7 @@ export const useTodo = () => {
     handleRemoveTodo,
     setEditing,
     handleEditTodo,
+    handleFilterTodo,
     handleToggleTodo,
     handleStarredTodo
   }
