@@ -3,6 +3,7 @@ import {
   RemoveTodo,
   setEdit,
   EditTodo,
+  setFilter,
   ToggleTodo,
   StarredTodo
 } from '../actions'
@@ -40,6 +41,14 @@ export const AppReducer = (state = initialState, action) => {
             }
           }
           return todo
+        })
+      }
+
+    case setFilter:
+      return {
+        ...state,
+        show: state.show.map((filter) => {
+          if (filter.pending === action.payload)
         })
       }
 
