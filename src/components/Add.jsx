@@ -15,8 +15,6 @@ export const Add = ({ onNewTodo }) => {
     date
   })
 
-  console.log(form)
-
   const handleSubmit = (event) => {
     event.preventDefault()
     if (description.length <= 3) return

@@ -11,7 +11,7 @@ export const Edit = ({ handleEdit }) => {
     description: ''
   }
 
-  const { id, description, form, handleChange, setValues } = useForm({
+  const { id, description, handleChange, setValues } = useForm({
     id: '',
     description: ''
   })
@@ -22,8 +22,6 @@ export const Edit = ({ handleEdit }) => {
       description: editing.description
     })
   }, [editing])
-
-  console.log(form)
 
   const handleSubmit = (e) => {
     e.preventDefault()

@@ -44,13 +44,11 @@ export const AppReducer = (state = initialState, action) => {
         })
       }
 
-    // case setFilter:
-    //   return {
-    //     ...state,
-    //     show: state.show.map((filter) => {
-    //       if (filter.pending === action.payload)
-    //     })
-    //   }
+    case setFilter:
+      return {
+        ...state,
+        filtering: `${action.payload}`
+      }
 
     case ToggleTodo:
       return {
