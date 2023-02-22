@@ -5,14 +5,17 @@ import { AddStyle } from './AddStyle'
 import { BsFillCalendarEventFill } from 'react-icons/bs'
 
 export const Add = ({ onNewTodo }) => {
-  const [value, onChange] = useState(new Date())
+  const [date, setDate] = useState(new Date())
 
   const { description, form, handleChange, handleReset } = useForm({
     description: '',
     done: false,
     starred: false,
-    deleted: false
+    deleted: false,
+    date
   })
+
+  console.log(form)
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -33,9 +36,9 @@ export const Add = ({ onNewTodo }) => {
       />
       <div className='add-submenu'>
         <DatePicker
-          onChange={onChange}
+          onChange={setDate}
           className='add-date'
-          value={value}
+          value={date}
           calendarIcon={<BsFillCalendarEventFill />}
         />
         <button type='submit' className='add-btn'>

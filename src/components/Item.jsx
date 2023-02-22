@@ -30,6 +30,9 @@ export const Item = ({
           <MdEdit />
         </button>
       </div>
+      {/* <p>
+        {todo.date.getDay()} {todo.date.getDate()}
+      </p> */}
     </ItemStyle>
   )
 }
