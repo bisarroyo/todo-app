@@ -17,10 +17,10 @@ export const TodosList = ({
             return item.deleted === true
           }
           if (filtering === 'pending') {
-            return item.starred !== true && item.done !== true
+            return item.starred !== true && item.done === false
           }
           if (filtering === 'starred') {
-            return item.starred === true
+            return item.starred === true && item.done === false
           }
           if (filtering === 'done') {
             return item.done === true
