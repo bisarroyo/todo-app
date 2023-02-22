@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ItemStyle = styled.div`
-  padding: 30px 20px 10px 20px;
+  padding: 20px 20px 10px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: space-between;

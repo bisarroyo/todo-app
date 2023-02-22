@@ -16,11 +16,9 @@ export const Filter = () => {
 
   return (
     <FilterStyle>
-      <div>
-        <button onClick={filterByPending}>Pending</button>
-        <button onClick={filterByStarred}>Starred</button>
-        <button onClick={filterByDone}>Done</button>
-      </div>
+      <button onClick={filterByPending}>Pending</button>
+      <button onClick={filterByStarred}>Starred</button>
+      <button onClick={filterByDone}>Done</button>
     </FilterStyle>
   )
 }

@@ -10,7 +10,8 @@ export const Add = ({ onNewTodo }) => {
   const { description, form, handleChange, handleReset } = useForm({
     description: '',
     done: false,
-    starred: false
+    starred: false,
+    deleted: false
   })
 
   const handleSubmit = (event) => {
