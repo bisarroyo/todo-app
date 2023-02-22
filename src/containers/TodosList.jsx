@@ -17,15 +17,19 @@ export const TodosList = ({
             return item.deleted === true
           }
           if (filtering === 'pending') {
-            return item.starred !== true && item.done === false
+            return item.done === false && item.deleted === false
           }
           if (filtering === 'starred') {
-            return item.starred === true && item.done === false
+            return (
+              item.starred === true &&
+              item.done === false &&
+              item.deleted === false
+            )
           }
           if (filtering === 'done') {
             return item.done === true
           }
-          return item
+          return item.done === false && item.deleted === false
         })
         .map((todo) => (
           <div key={todo.id}>

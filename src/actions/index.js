@@ -1,5 +1,6 @@
 export const AddTodo = '[TODO] Add'
 export const RemoveTodo = '[TODO] Remove'
+export const RemovePermanentTodo = '[TODO] Remove Permanent'
 export const EditTodo = '[TODO] Edit'
 export const setEdit = '[TODO] Editing'
 export const setFilter = '[TODO] Filter'

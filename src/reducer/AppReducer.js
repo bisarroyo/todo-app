@@ -1,6 +1,7 @@
 import {
   AddTodo,
   RemoveTodo,
+  RemovePermanentTodo,
   setEdit,
   EditTodo,
   setFilter,
@@ -19,6 +20,20 @@ export const AppReducer = (state = initialState, action) => {
       }
 
     case RemoveTodo:
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.payload) {
+            return {
+              ...todo,
+              deleted: !todo.deleted
+            }
+          }
+          return todo
+        })
+      }
+
+    case RemovePermanentTodo:
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload)
