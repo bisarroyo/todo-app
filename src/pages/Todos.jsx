@@ -20,12 +20,9 @@ export const Todos = () => {
   return (
     <TodosStyle>
       <section>
-        <h2>Menu</h2>
-        <Filter />
-      </section>
-      <section>
         <h1>My To-dos</h1>
         <Add onNewTodo={handleAddTodo} />
+        <Filter />
         <TodosList
           todos={todos}
           handleDelete={handleRemoveTodo}
