@@ -9,39 +9,37 @@ export const TodosList = ({
   handleStarred
 }) => {
   const { filtering } = useAppContext()
+
+  const filterTodos = (item) => {
+    if (filtering === 'deleted') {
+      return item.deleted === true
+    }
+    if (filtering === 'pending') {
+      return item.done === false && item.deleted === false
+    }
+    if (filtering === 'starred') {
+      return (
+        item.starred === true && item.done === false && item.deleted === false
+      )
+    }
+    if (filtering === 'done') {
+      return item.done === true
+    }
+    return item.done === false && item.deleted === false
+  }
   return (
     <div>
-      {todos
-        .filter((item) => {
-          if (filtering === 'deleted') {
-            return item.deleted === true
-          }
-          if (filtering === 'pending') {
-            return item.done === false && item.deleted === false
-          }
-          if (filtering === 'starred') {
-            return (
-              item.starred === true &&
-              item.done === false &&
-              item.deleted === false
-            )
-          }
-          if (filtering === 'done') {
-            return item.done === true
-          }
-          return item.done === false && item.deleted === false
-        })
-        .map((todo) => (
-          <div key={todo.id}>
-            <Item
-              todo={todo}
-              handleDelete={handleDelete}
-              handleEdit={handleEdit}
-              handleToggle={handleToggle}
-              handleStarred={handleStarred}
-            />
-          </div>
-        ))}
+      {todos.filter(filterTodos).map((todo) => (
+        <div key={todo.id}>
+          <Item
+            todo={todo}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+            handleToggle={handleToggle}
+            handleStarred={handleStarred}
+          />
+        </div>
+      ))}
     </div>
   )
 }
