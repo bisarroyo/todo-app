@@ -13,7 +13,7 @@ export const AddStyle = styled.form`
     height: 50px;
     padding: 0 20px;
     border-radius: 5px 5px 0 0;
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
   }
   .add-input:focus-visible {
     outline: none;
@@ -21,13 +21,13 @@ export const AddStyle = styled.form`
   .add-submenu {
     width: 100%;
     height: 50px;
-    background-color: rgba(0,0,0,0.02);
+    background-color: rgba(0, 0, 0, 0.02);
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 0 0 5px 5px;
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-top: none;
 
     .add-date {
@@ -43,11 +43,15 @@ export const AddStyle = styled.form`
 
     .add-btn {
       padding: 5px 25px;
-      border: 1px solid rgba(0,0,0,0.3);
-      background-color: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      background-color: #ffffff;
       border-radius: 5px;
       cursor: pointer;
       color: #000000;
+      transition: 0.3s all ease;
+    }
+    .add-btn:hover {
+      background-color: rgba(0, 0, 0, 0.02);
     }
   }
 `
