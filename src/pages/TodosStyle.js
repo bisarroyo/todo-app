@@ -20,7 +20,6 @@ export const TodosStyle = styled.div`
     flex-direction: column;
     border-left: 1px solid rgba(0, 0, 0, 0.3);
     height: 100%;
-    position: sticky;
     box-shadow: 0px 1.2px 3.6px rgb(0 0 0 / 10%),
       0px 6.4px 14.4px rgb(0 0 0 / 10%);
     box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.1),

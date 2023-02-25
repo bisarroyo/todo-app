@@ -20,44 +20,48 @@ export const Item = ({
   return (
     <motion.div
       animate={{
-        y: 10
+        y: 10,
+        opacity: 1
       }}
+      initial={{ opacity: 0 }}
     >
       <ItemStyle>
-        <div className='item-info'>
-          <input
-            type='checkbox'
-            onChange={() => handleToggle(todo.id)}
-            checked={todo.done}
-          />
-          <p className={`${todo.done && 'todo-done'}`}>{todo.description}</p>
-        </div>
-        <div className='item-controls'>
-          <button onClick={() => handleStarred(todo.id)} disabled={todo.done}>
-            {todo.starred ? <AiFillStar /> : <AiOutlineStar />}
-          </button>
-          {todo.deleted ? (
-            <div>
-              <button onClick={() => handleDelete(todo.id)}>
-                <MdRestoreFromTrash />
-              </button>
-              <button onClick={() => handleDeletePermanent(todo.id)}>
-                <MdDeleteForever />
-              </button>
-            </div>
-          ) : (
-            <button onClick={() => handleDelete(todo.id)}>
-              <MdDelete />
+        <div className='item-container'>
+          <div className='item-info'>
+            <input
+              type='checkbox'
+              onChange={() => handleToggle(todo.id)}
+              checked={todo.done}
+            />
+            <p className={`${todo.done && 'todo-done'}`}>{todo.description}</p>
+          </div>
+          <div className='item-controls'>
+            <button onClick={() => handleStarred(todo.id)} disabled={todo.done}>
+              {todo.starred ? <AiFillStar /> : <AiOutlineStar />}
             </button>
-          )}
+            {todo.deleted ? (
+              <div>
+                <button onClick={() => handleDelete(todo.id)}>
+                  <MdRestoreFromTrash />
+                </button>
+                <button onClick={() => handleDeletePermanent(todo.id)}>
+                  <MdDeleteForever />
+                </button>
+              </div>
+            ) : (
+              <button onClick={() => handleDelete(todo.id)}>
+                <MdDelete />
+              </button>
+            )}
 
-          <button onClick={() => handleEdit(todo)} disabled={todo.done}>
-            <MdEdit />
-          </button>
+            <button onClick={() => handleEdit(todo)} disabled={todo.done}>
+              <MdEdit />
+            </button>
+          </div>
         </div>
-        {/* <p>
-        {todo.date.getDay()} {todo.date.getDate()}
-      </p> */}
+        <p className='item-date'>
+          {new Intl.DateTimeFormat().format(todo.date)}
+        </p>
       </ItemStyle>
     </motion.div>
   )

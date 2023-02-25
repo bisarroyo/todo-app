@@ -2,7 +2,7 @@ import { useState } from 'react'
 import DatePicker from 'react-date-picker'
 import { useForm } from '../hooks/useForm'
 import { AddStyle } from './AddStyle'
-import { BsFillCalendarEventFill } from 'react-icons/bs'
+import { MdOutlineEditCalendar } from 'react-icons/md'
 import { useTodo } from '../hooks/useTodo'
 
 export const Add = ({ onNewTodo }) => {
@@ -41,7 +41,7 @@ export const Add = ({ onNewTodo }) => {
           onChange={setDate}
           className='add-date'
           value={date}
-          calendarIcon={<BsFillCalendarEventFill />}
+          calendarIcon={<MdOutlineEditCalendar />}
         />
         <button type='submit' className='add-btn'>
           Add

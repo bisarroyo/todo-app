@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 
 export const ItemStyle = styled.div`
-  padding: 20px 20px 10px 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  .item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .item-info {
     display: flex;
@@ -44,5 +48,9 @@ export const ItemStyle = styled.div`
       cursor: not-allowed;
       opacity: 0.3;
     }
+  }
+  .item-date {
+    font-size: 12px !important;
+    padding-left: 20px;
   }
 `
