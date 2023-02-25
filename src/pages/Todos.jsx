@@ -21,7 +21,7 @@ export const Todos = () => {
   return (
     <TodosStyle>
       <section>
-        <h1>My To-dos</h1>
+        <h1>My day</h1>
         <Add onNewTodo={handleAddTodo} />
         <Filter />
         <TodosList

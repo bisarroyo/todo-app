@@ -33,7 +33,12 @@ export const Item = ({
               onChange={() => handleToggle(todo.id)}
               checked={todo.done}
             />
-            <p className={`${todo.done && 'todo-done'}`}>{todo.description}</p>
+            <p
+              className={`${todo.done && 'todo-done'}`}
+              onClick={() => handleEdit(todo)}
+            >
+              {todo.description}
+            </p>
           </div>
           <div className='item-controls'>
             <button onClick={() => handleStarred(todo.id)} disabled={todo.done}>
