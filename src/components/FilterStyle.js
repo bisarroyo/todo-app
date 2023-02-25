@@ -18,6 +18,9 @@ export const FilterStyle = styled.div`
     transition: 0.3s all ease;
   }
   button:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .active-filter {
+    background-color: rgba(0, 0, 0, 0.15);
   }
 `
