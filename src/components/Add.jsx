@@ -3,6 +3,7 @@ import DatePicker from 'react-date-picker'
 import { useForm } from '../hooks/useForm'
 import { AddStyle } from './AddStyle'
 import { BsFillCalendarEventFill } from 'react-icons/bs'
+import { useTodo } from '../hooks/useTodo'
 
 export const Add = ({ onNewTodo }) => {
   const [date, setDate] = useState(new Date())
@@ -15,11 +16,14 @@ export const Add = ({ onNewTodo }) => {
     date
   })
 
+  const { handleFilterTodo } = useTodo()
+
   const handleSubmit = (event) => {
     event.preventDefault()
     if (description.length <= 3) return
     onNewTodo(form)
     handleReset()
+    handleFilterTodo('pending')
   }
 
   return (

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { MdCheck } from 'react-icons/md'
 import { useAppContext } from '../hooks/useAppContext'
 import { useForm } from '../hooks/useForm'
 import { EditStyle } from './EditStyle'
@@ -35,7 +36,9 @@ export const Edit = ({ handleEdit }) => {
         onChange={handleChange}
         value={description ?? initialLoad.description}
       />
-      <button onClick={() => handleEdit(id, description)}>Edit</button>
+      <button onClick={() => handleEdit(id, description)}>
+        <MdCheck />
+      </button>
     </EditStyle>
   )
 }

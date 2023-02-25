@@ -11,6 +11,7 @@ export const Todos = () => {
     todos,
     handleAddTodo,
     handleRemoveTodo,
+    handleRemoveTodoPermanent,
     setEditing,
     handleEditTodo,
     handleToggleTodo,
@@ -26,6 +27,7 @@ export const Todos = () => {
         <TodosList
           todos={todos}
           handleDelete={handleRemoveTodo}
+          handleDeletePermanent={handleRemoveTodoPermanent}
           handleEdit={setEditing}
           handleToggle={handleToggleTodo}
           handleStarred={handleStarredTodo}

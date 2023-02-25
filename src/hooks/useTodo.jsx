@@ -1,6 +1,7 @@
 import {
   AddTodo,
   RemoveTodo,
+  RemovePermanentTodo,
   setEdit,
   EditTodo,
   setFilter,
@@ -23,6 +24,13 @@ export const useTodo = () => {
   const handleRemoveTodo = (id) => {
     const action = {
       type: RemoveTodo,
+      payload: id
+    }
+    dispatch(action)
+  }
+  const handleRemoveTodoPermanent = (id) => {
+    const action = {
+      type: RemovePermanentTodo,
       payload: id
     }
     dispatch(action)
@@ -74,6 +82,7 @@ export const useTodo = () => {
     todos,
     handleAddTodo,
     handleRemoveTodo,
+    handleRemoveTodoPermanent,
     setEditing,
     handleEditTodo,
     handleFilterTodo,

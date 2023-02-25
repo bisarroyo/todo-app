@@ -4,6 +4,7 @@ import { useAppContext } from '../hooks/useAppContext'
 export const TodosList = ({
   todos,
   handleDelete,
+  handleDeletePermanent,
   handleEdit,
   handleToggle,
   handleStarred
@@ -23,7 +24,7 @@ export const TodosList = ({
       )
     }
     if (filtering === 'done') {
-      return item.done === true
+      return item.done === true && item.deleted === false
     }
     return item.done === false && item.deleted === false
   }
@@ -34,6 +35,7 @@ export const TodosList = ({
           <Item
             todo={todo}
             handleDelete={handleDelete}
+            handleDeletePermanent={handleDeletePermanent}
             handleEdit={handleEdit}
             handleToggle={handleToggle}
             handleStarred={handleStarred}
