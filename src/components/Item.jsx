@@ -1,49 +1,64 @@
 /* eslint-disable multiline-ternary */
 import { ItemStyle } from './ItemStyle'
-import { MdDelete, MdEdit } from 'react-icons/md'
+import {
+  MdDelete,
+  MdEdit,
+  MdRestoreFromTrash,
+  MdDeleteForever
+} from 'react-icons/md'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
-import { FaTrashRestore } from 'react-icons/fa'
-import { useAppContext } from '../hooks/useAppContext'
+import { motion } from 'framer-motion'
 
 export const Item = ({
   todo,
   handleDelete,
+  handleDeletePermanent,
   handleEdit,
   handleToggle,
   handleStarred
 }) => {
-  const { deleted } = useAppContext()
   return (
-    <ItemStyle>
-      <div className='item-info'>
-        <input
-          type='checkbox'
-          onChange={() => handleToggle(todo.id)}
-          checked={todo.done}
-        />
-        <p className={`${todo.done && 'todo-done'}`}>{todo.description}</p>
-      </div>
-      <div className='item-controls'>
-        <button onClick={() => handleStarred(todo.id)} disabled={todo.done}>
-          {todo.starred ? <AiFillStar /> : <AiOutlineStar />}
-        </button>
-        {deleted ? (
-          <button onClick={() => handleDelete(todo.id)}>
-            <FaTrashRestore />
+    <motion.div
+      animate={{
+        y: 10
+      }}
+    >
+      <ItemStyle>
+        <div className='item-info'>
+          <input
+            type='checkbox'
+            onChange={() => handleToggle(todo.id)}
+            checked={todo.done}
+          />
+          <p className={`${todo.done && 'todo-done'}`}>{todo.description}</p>
+        </div>
+        <div className='item-controls'>
+          <button onClick={() => handleStarred(todo.id)} disabled={todo.done}>
+            {todo.starred ? <AiFillStar /> : <AiOutlineStar />}
           </button>
-        ) : (
-          <button onClick={() => handleDelete(todo.id)}>
-            <MdDelete />
-          </button>
-        )}
+          {todo.deleted ? (
+            <div>
+              <button onClick={() => handleDelete(todo.id)}>
+                <MdRestoreFromTrash />
+              </button>
+              <button onClick={() => handleDeletePermanent(todo.id)}>
+                <MdDeleteForever />
+              </button>
+            </div>
+          ) : (
+            <button onClick={() => handleDelete(todo.id)}>
+              <MdDelete />
+            </button>
+          )}
 
-        <button onClick={() => handleEdit(todo)} disabled={todo.done}>
-          <MdEdit />
-        </button>
-      </div>
-      {/* <p>
+          <button onClick={() => handleEdit(todo)} disabled={todo.done}>
+            <MdEdit />
+          </button>
+        </div>
+        {/* <p>
         {todo.date.getDay()} {todo.date.getDate()}
       </p> */}
-    </ItemStyle>
+      </ItemStyle>
+    </motion.div>
   )
 }
