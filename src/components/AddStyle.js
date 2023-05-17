@@ -10,8 +10,8 @@ export const AddStyle = styled.form`
 
   .add-input {
     width: 100%;
-    height: 50px;
-    padding: 0 20px;
+    min-height: 50px;
+    padding: 15px 20px;
     border-radius: 5px 5px 0 0;
     border: 1px solid rgba(0, 0, 0, 0.3);
   }
@@ -20,12 +20,14 @@ export const AddStyle = styled.form`
   }
   .add-submenu {
     width: 100%;
-    height: 50px;
+    min-height: 50px;
     background-color: rgba(0, 0, 0, 0.02);
-    padding: 0 20px;
+    padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
+    gap: 15px;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     border-radius: 0 0 5px 5px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-top: none;

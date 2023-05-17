@@ -3,12 +3,13 @@ import styled from 'styled-components'
 export const FilterStyle = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
   margin: 15px 0;
 
   button {
+    width: 105px;
     padding: 5px 25px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: #ffffff;

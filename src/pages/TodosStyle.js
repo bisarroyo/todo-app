@@ -4,6 +4,9 @@ export const TodosStyle = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr;
+  }
 
   section:nth-child(1) {
     height: 100%;
@@ -24,5 +27,8 @@ export const TodosStyle = styled.div`
       0px 6.4px 14.4px rgb(0 0 0 / 10%);
     box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.1),
       0px 6.4px 14.4px rgba(0, 0, 0, 0.1);
+    @media (max-width: 991px) {
+      display: none;
+    }
   }
 `

@@ -43,9 +43,7 @@ export const Add = ({ onNewTodo }) => {
           value={date}
           calendarIcon={<MdOutlineEditCalendar />}
         />
-        <button type='submit' className='add-btn'>
-          Add
-        </button>
+        <input type='submit' className='add-btn' value='add' />
       </div>
     </AddStyle>
   )

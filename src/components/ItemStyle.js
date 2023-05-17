@@ -9,6 +9,7 @@ export const ItemStyle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .item-info {
@@ -36,6 +37,10 @@ export const ItemStyle = styled.div`
   .item-controls {
     display: flex;
     flex-wrap: nowrap;
+
+    @media (max-width: 991px) {
+      margin-top: 15px;
+    }
     button {
       border: none;
       background-color: transparent;

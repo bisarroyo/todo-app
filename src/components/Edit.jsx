@@ -22,6 +22,7 @@ export const Edit = ({ handleEdit }) => {
       id: editing.id,
       description: editing.description
     })
+    console.log(editing)
   }, [editing])
 
   const handleSubmit = (e) => {
@@ -30,15 +31,20 @@ export const Edit = ({ handleEdit }) => {
 
   return (
     <EditStyle onSubmit={handleSubmit}>
-      <input
-        type='text'
-        name='description'
-        onChange={handleChange}
-        value={description ?? initialLoad.description}
-      />
-      <button onClick={() => handleEdit(id, description)}>
-        <MdCheck />
-      </button>
+      <div
+        className={!editing.id ? 'edit-container disabled' : 'edit-container'}
+      >
+        <input
+          type='text'
+          name='description'
+          onChange={handleChange}
+          value={description ?? initialLoad.description}
+          disabled={!editing.id}
+        />
+        <button onClick={() => handleEdit(id, description)}>
+          <MdCheck />
+        </button>
+      </div>
     </EditStyle>
   )
 }
