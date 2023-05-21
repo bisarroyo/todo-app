@@ -12,15 +12,19 @@ import {
 const initialState = []
 
 export const AppReducer = (state = initialState, action) => {
+  let data = null
   switch (action.type) {
     case AddTodo:
-      return {
+      data = {
         ...state,
-        todos: [...state.todos, action.payload]
+        todos: [...state.todos, action.payload],
+        notification: 'TODO added'
       }
+      window.localStorage.setItem('todos', JSON.stringify(data.todos))
+      return data
 
     case RemoveTodo:
-      return {
+      data = {
         ...state,
         todos: state.todos.map((todo) => {
           if (todo.id === action.payload) {
@@ -32,12 +36,17 @@ export const AppReducer = (state = initialState, action) => {
           return todo
         })
       }
+      window.localStorage.setItem('todos', JSON.stringify(data.todos))
+      return data
 
     case RemovePermanentTodo:
-      return {
+      data = {
         ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload)
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
+        notification: 'Deleted permanent'
       }
+      window.localStorage.setItem('todos', JSON.stringify(data.todos))
+      return data
 
     case setEdit:
       return {
@@ -46,7 +55,7 @@ export const AppReducer = (state = initialState, action) => {
       }
 
     case EditTodo:
-      return {
+      data = {
         ...state,
         todos: state.todos.map((todo) => {
           if (todo.id === action.payload.id) {
@@ -58,6 +67,8 @@ export const AppReducer = (state = initialState, action) => {
           return todo
         })
       }
+      window.localStorage.setItem('todos', JSON.stringify(data.todos))
+      return data
 
     case setFilter:
       return {
@@ -66,7 +77,7 @@ export const AppReducer = (state = initialState, action) => {
       }
 
     case ToggleTodo:
-      return {
+      data = {
         ...state,
         todos: state.todos.map((todo) => {
           if (todo.id === action.payload) {
@@ -78,9 +89,11 @@ export const AppReducer = (state = initialState, action) => {
           return todo
         })
       }
+      window.localStorage.setItem('todos', JSON.stringify(data.todos))
+      return data
 
     case StarredTodo:
-      return {
+      data = {
         ...state,
         todos: state.todos.map((todo) => {
           if (todo.id === action.payload) {
@@ -92,6 +105,8 @@ export const AppReducer = (state = initialState, action) => {
           return todo
         })
       }
+      window.localStorage.setItem('todos', JSON.stringify(data.todos))
+      return data
 
     default:
       return state

@@ -9,6 +9,24 @@ import {
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { motion } from 'framer-motion'
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString)
+
+  const options = {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  }
+
+  const formattedDate = new Intl.DateTimeFormat('es', options).format(date)
+
+  return formattedDate
+}
+
 export const Item = ({
   todo,
   handleDelete,
@@ -17,6 +35,7 @@ export const Item = ({
   handleToggle,
   handleStarred
 }) => {
+  const formattedDate = formatDate(todo.date)
   return (
     <motion.div
       animate={{
@@ -64,9 +83,7 @@ export const Item = ({
             </button>
           </div>
         </div>
-        <p className='item-date'>
-          {new Intl.DateTimeFormat().format(todo.date)}
-        </p>
+        <p className='item-date'>{formattedDate}</p>
       </ItemStyle>
     </motion.div>
   )

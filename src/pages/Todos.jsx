@@ -1,3 +1,5 @@
+import toast, { Toaster } from 'react-hot-toast'
+
 import { Add } from '../components/Add'
 import { TodosList } from '../containers/TodosList'
 import { TodosStyle } from './TodosStyle'
@@ -5,6 +7,14 @@ import { Edit } from '../components/Edit'
 import { Filter } from '../components/Filter'
 
 import { useTodo } from '../hooks/useTodo'
+import { useState } from 'react'
+import { useEffect } from 'react'
+
+const notify = (text) =>
+  toast.success(text, {
+    duration: 4000,
+    position: 'bottom-right'
+  })
 
 export const Todos = () => {
   const {
@@ -17,6 +27,13 @@ export const Todos = () => {
     handleToggleTodo,
     handleStarredTodo
   } = useTodo()
+
+  const [notification, setNotification] = useState(todos.notification)
+
+  console.log(todos)
+  useEffect(() => {
+    notify(notification)
+  }, notification)
 
   return (
     <TodosStyle>
@@ -37,6 +54,7 @@ export const Todos = () => {
         <h2>Info</h2>
         <Edit handleEdit={handleEditTodo} />
       </section>
+      <Toaster />
     </TodosStyle>
   )
 }

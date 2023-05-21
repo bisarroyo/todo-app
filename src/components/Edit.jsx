@@ -22,7 +22,6 @@ export const Edit = ({ handleEdit }) => {
       id: editing.id,
       description: editing.description
     })
-    console.log(editing)
   }, [editing])
 
   const handleSubmit = (e) => {
