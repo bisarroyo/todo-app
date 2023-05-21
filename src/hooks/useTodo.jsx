@@ -6,7 +6,8 @@ import {
   EditTodo,
   setFilter,
   ToggleTodo,
-  StarredTodo
+  StarredTodo,
+  NotificationTodo
 } from '../actions'
 import { useAppContext } from './useAppContext'
 
@@ -78,6 +79,14 @@ export const useTodo = () => {
     dispatch(action)
   }
 
+  const handleNotification = () => {
+    const action = {
+      type: NotificationTodo,
+      payload: ''
+    }
+    dispatch(action)
+  }
+
   return {
     todos,
     handleAddTodo,
@@ -87,6 +96,7 @@ export const useTodo = () => {
     handleEditTodo,
     handleFilterTodo,
     handleToggleTodo,
-    handleStarredTodo
+    handleStarredTodo,
+    handleNotification
   }
 }

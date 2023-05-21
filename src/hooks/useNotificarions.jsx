@@ -1,92 +1,47 @@
-import {
-  AddTodo,
-  RemoveTodo,
-  RemovePermanentTodo,
-  setEdit,
-  EditTodo,
-  setFilter,
-  ToggleTodo,
-  StarredTodo
-} from '../actions'
+import toast, { Toaster } from 'react-hot-toast'
+import { useState, useEffect } from 'react'
 import { useAppContext } from './useAppContext'
+import { useTodo } from './useTodo'
 
-export const useTodo = () => {
-  const { todos, dispatch } = useAppContext()
+export const UseNotification = () => {
+  const { handleNotification } = useTodo()
 
-  const handleAddTodo = (todo) => {
-    const action = {
-      type: AddTodo,
-      payload: todo
-    }
-    dispatch(action)
-  }
+  // extract notifications from the global state
+  const {
+    notification: { text, type }
+  } = useAppContext()
+  const [toastNotification, setToastNotification] = useState('')
 
-  const handleRemoveTodo = (id) => {
-    const action = {
-      type: RemoveTodo,
-      payload: id
+  const notify = (text) => {
+    const notificationTypes = {
+      success: toast.success,
+      error: toast.error
     }
-    dispatch(action)
-  }
-  const handleRemoveTodoPermanent = (id) => {
-    const action = {
-      type: RemovePermanentTodo,
-      payload: id
+    const notificationFunction = notificationTypes[type]
+    if (notificationFunction) {
+      notificationFunction(text, {
+        duration: 4000,
+        position: 'bottom-right'
+      })
+      handleNotification()
+    } else {
+      notificationTypes.success(text, {
+        duration: 4000,
+        position: 'bottom-right'
+      })
+      handleNotification()
     }
-    dispatch(action)
   }
+  console.log(toastNotification)
 
-  const setEditing = (todo) => {
-    const action = {
-      type: setEdit,
-      payload: todo
-    }
-    dispatch(action)
-  }
-
-  const handleEditTodo = (id, description) => {
-    const action = {
-      type: EditTodo,
-      payload: {
-        id,
-        description
-      }
-    }
-    dispatch(action)
-  }
-  const handleFilterTodo = (filter) => {
-    const action = {
-      type: setFilter,
-      payload: filter
-    }
-    dispatch(action)
+  if (toastNotification !== text) {
+    setToastNotification(text)
   }
 
-  const handleToggleTodo = (id) => {
-    const action = {
-      type: ToggleTodo,
-      payload: id
+  useEffect(() => {
+    if (toastNotification !== '' && toastNotification !== undefined) {
+      notify(toastNotification)
     }
-    dispatch(action)
-  }
-
-  const handleStarredTodo = (id) => {
-    const action = {
-      type: StarredTodo,
-      payload: id
-    }
-    dispatch(action)
-  }
-
-  return {
-    todos,
-    handleAddTodo,
-    handleRemoveTodo,
-    handleRemoveTodoPermanent,
-    setEditing,
-    handleEditTodo,
-    handleFilterTodo,
-    handleToggleTodo,
-    handleStarredTodo
-  }
+  }, [toastNotification])
+  return <Toaster />
 }

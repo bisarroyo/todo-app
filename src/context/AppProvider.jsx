@@ -12,7 +12,10 @@ const initialState = {
   filtering: '',
   loading: false,
   error: null,
-  notification: 'test'
+  notification: {
+    text: 'Succesfully load',
+    type: ''
+  }
 }
 
 export const AppProvider = ({ children }) => {

@@ -6,7 +6,8 @@ import {
   EditTodo,
   setFilter,
   ToggleTodo,
-  StarredTodo
+  StarredTodo,
+  NotificationTodo
 } from '../actions'
 
 const initialState = []
@@ -18,7 +19,10 @@ export const AppReducer = (state = initialState, action) => {
       data = {
         ...state,
         todos: [...state.todos, action.payload],
-        notification: 'TODO added'
+        notification: {
+          text: 'TODO added',
+          type: 'success'
+        }
       }
       window.localStorage.setItem('todos', JSON.stringify(data.todos))
       return data
@@ -34,7 +38,11 @@ export const AppReducer = (state = initialState, action) => {
             }
           }
           return todo
-        })
+        }),
+        notification: {
+          text: 'Moved to trash',
+          type: 'error'
+        }
       }
       window.localStorage.setItem('todos', JSON.stringify(data.todos))
       return data
@@ -43,7 +51,10 @@ export const AppReducer = (state = initialState, action) => {
       data = {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
-        notification: 'Deleted permanent'
+        notification: {
+          text: 'Deleted permanent',
+          type: 'error'
+        }
       }
       window.localStorage.setItem('todos', JSON.stringify(data.todos))
       return data
@@ -65,7 +76,11 @@ export const AppReducer = (state = initialState, action) => {
             }
           }
           return todo
-        })
+        }),
+        notification: {
+          text: 'Todo modified',
+          type: 'success'
+        }
       }
       window.localStorage.setItem('todos', JSON.stringify(data.todos))
       return data
@@ -87,7 +102,11 @@ export const AppReducer = (state = initialState, action) => {
             }
           }
           return todo
-        })
+        }),
+        notification: {
+          text: 'TODO done',
+          type: 'success'
+        }
       }
       window.localStorage.setItem('todos', JSON.stringify(data.todos))
       return data
@@ -103,11 +122,20 @@ export const AppReducer = (state = initialState, action) => {
             }
           }
           return todo
-        })
+        }),
+        notification: {
+          text: 'TODO starred',
+          type: 'success'
+        }
       }
       window.localStorage.setItem('todos', JSON.stringify(data.todos))
       return data
 
+    case NotificationTodo:
+      return {
+        ...state,
+        notification: action.payload
+      }
     default:
       return state
   }
